@@ -1,12 +1,15 @@
 $(document).ready(() => {
-  $.get('http://localhost:8080/api/v1/kpis', (response, status) => {
-    if (response.data) {
-      response.data.sort((a, b) => {
-        return new Date(b.create_date) - new Date(a.create_date);
-      });
-      createCharts(response.data[0]);
+  $.get(
+    'https://ew-kpi-service.herokuapp.com/api/v1/kpis',
+    (response, status) => {
+      if (response.data) {
+        response.data.sort((a, b) => {
+          return new Date(b.create_date) - new Date(a.create_date);
+        });
+        createCharts(response.data[0]);
+      }
     }
-  });
+  );
 });
 
 function createCharts(data) {
