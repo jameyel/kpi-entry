@@ -2,7 +2,7 @@ $(document).ready(() => {
   $.get(
     'https://ew-kpi-service.herokuapp.com/api/v1/kpis',
     (response, status) => {
-      if (response.data) {
+      if (response.data && response.data.length > 0) {
         response.data.sort((a, b) => {
           return new Date(b.create_date) - new Date(a.create_date);
         });
